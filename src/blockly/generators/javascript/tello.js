@@ -207,6 +207,11 @@ Blockly.JavaScript['yaw_left'] = function(block) {
   }
 };
 
+Blockly.JavaScript['battery'] = function(block) {
+  let code = 'mission+="|battery";';
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
 Blockly.JavaScript['flip_forward'] = function(block) {
   return 'mission+="|flip_forward";';
 };

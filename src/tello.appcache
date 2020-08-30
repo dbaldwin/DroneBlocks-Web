@@ -13,6 +13,9 @@ blockly/generators/python/tello.js
 blockly/msg/js/en.js
 blockly/blocks/tello/takeoff.js
 blockly/blocks/tello/takeoff_after.js
+blockly/blocks/tello/altitude.js
+blockly/blocks/tello/battery.js
+blockly/blocks/tello/temperature.js
 blockly/blocks/tello/land.js
 blockly/blocks/tello/land_then_takeoff.js
 blockly/blocks/tello/speed.js

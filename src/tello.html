@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html manifest="tello.appcache">
-<!-- <html> -->
+<!-- <html manifest="tello.appcache"> -->
+<html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
@@ -17,6 +17,9 @@
   <script src="./blockly/msg/js/en.js"></script>
   <script src="./blockly/blocks/tello/takeoff.js"></script>
   <script src="./blockly/blocks/tello/takeoff_after.js"></script>
+  <script src="./blockly/blocks/tello/altitude.js"></script>
+  <script src="./blockly/blocks/tello/battery.js"></script>
+  <script src="./blockly/blocks/tello/temperature.js"></script>
   <script src="./blockly/blocks/tello/land_then_takeoff.js"></script>
   <script src="./blockly/blocks/tello/land.js"></script>
   <script src="./blockly/blocks/tello/speed.js"></script>
@@ -42,7 +45,7 @@
   <link rel="stylesheet" href="./css/style.css">
 
   <!-- Material -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
   <link type="text/css" rel="stylesheet" href="./lib/materialize/css/materialize.min.css"  media="screen,projection"/>
 
   <script>
@@ -141,7 +144,7 @@
 
   <xml id="toolbox" style="display: none">
     <category name="Takeoff">
-      <block type="takeoff"></block>
+      <block type="takeoff" id="takeoff"></block>
       <block type="takeoff_after">
         <value name="delay">
           <shadow type="math_number">
@@ -270,6 +273,11 @@
           </shadow>
         </value>
       </block>
+    </category>
+    <category name="Sensors">
+      <block type="battery"></block>
+      <block type="altitude"></block>
+      <block type="temperature"></block>
     </category>
     <category name="Flip">
       <block type="flip_forward"></block>

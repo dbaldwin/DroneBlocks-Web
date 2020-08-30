@@ -78,6 +78,10 @@ Blockly.Python['yaw_left'] = function(block) {
   return 'yawLeft(' + angle + ');\n';
 };
 
+Blockly.Python['battery'] = function(block) {
+  return ['getBattery();\n', Blockly.JavaScript.ORDER_NONE];
+};
+
 Blockly.Python['flip_forward'] = function(block) {
   return 'flipForward();\n';
 };
