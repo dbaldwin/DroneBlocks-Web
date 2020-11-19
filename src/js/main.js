@@ -414,6 +414,8 @@ function openFullscreen(elem) {
 }
 
 function launch() {
+    window.external.notify("Please work 123");
+
     let code = 'var mission="";'
         code += Blockly.JavaScript.workspaceToCode(blockly.workspace);
         code = eval(code);
@@ -421,26 +423,32 @@ function launch() {
         // console.log(window.commands);
         var os = helpers.getMobileOS();
 
-        if (os == 'iOS') {
+        console.log(os);
 
-            window.webkit.messageHandlers.observe.postMessage(code);
+        window.external.notify(code);
 
-        } else if (os == 'Android') {
+        
 
-            Android.confirmMission(code);
+        // if (os == 'iOS') {
 
-        } else if (aircraft == "DJI") {
+        //     window.webkit.messageHandlers.observe.postMessage(code);
 
-            $("#mapPreviewModal").html("<iframe src='map_preview.html?code=" + escape(code) + "' width='100%' height='100%'></iframe>");
-            $("#mapPreviewModal").openModal();
+        // } else if (os == 'Android') {
 
-            // Chrome App case
-        } else {
+        //     Android.confirmMission(code);
 
-            // Appwindow is so we can post to the chrome app
-            appWindow.postMessage(code, appOrigin);
+        // } else if (aircraft == "DJI") {
 
-        }
+        //     $("#mapPreviewModal").html("<iframe src='map_preview.html?code=" + escape(code) + "' width='100%' height='100%'></iframe>");
+        //     $("#mapPreviewModal").openModal();
+
+        //     // Chrome App case
+        // } else {
+
+        //     // Appwindow is so we can post to the chrome app
+        //     appWindow.postMessage(code, appOrigin);
+
+        // }
 }
 
 // We only want to launch with the T key on simulator

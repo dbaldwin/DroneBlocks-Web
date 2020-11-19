@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<!-- <html> -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <title>DroneBlocks</title>
+  <script src="./js/jquery-2.2.3.min.js"></script>
+  <script src="./blockly/blockly_compressed.js"></script>
+  <script src="./blockly/blocks_compressed.js"></script>
+  <script src="./blockly/javascript_compressed.js"></script>
+  <script src="./blockly/python_compressed.js"></script>
+  <script src="./blockly/storage.js"></script>
+  <script src="./blockly/run_prettify.js"></script>
+  <script src="./blockly/generators/javascript/tello.js"></script>
+  <script src="./blockly/generators/python/tello.js"></script>
+  <script src="./blockly/msg/js/en.js"></script>
+  <script src="./blockly/blocks/tello/takeoff.js"></script>
+  <script src="./blockly/blocks/tello/takeoff_after.js"></script>
+  <script src="./blockly/blocks/tello/land_then_takeoff.js"></script>
+  <script src="./blockly/blocks/tello/land.js"></script>
+  <script src="./blockly/blocks/tello/speed.js"></script>
+  <script src="./blockly/blocks/tello/fly_forward.js"></script>
+  <script src="./blockly/blocks/tello/fly_backward.js"></script>
+  <script src="./blockly/blocks/tello/fly_left.js"></script>
+  <script src="./blockly/blocks/tello/fly_right.js"></script>
+  <script src="./blockly/blocks/tello/fly_up.js"></script>
+  <script src="./blockly/blocks/tello/fly_down.js"></script>
+  <script src="./blockly/blocks/tello/fly_xyz.js"></script>
+  <script src="./blockly/blocks/tello/curve.js"></script>
+  <script src="./blockly/blocks/tello/hover.js"></script>
+  <script src="./blockly/blocks/tello/yaw_right.js"></script>
+  <script src="./blockly/blocks/tello/yaw_left.js"></script>
+  <script src="./blockly/blocks/tello/photo.js"></script>
+  <script src="./blockly/blocks/tello/photo_interval.js"></script>
+  <script src="./blockly/blocks/tello/flip_forward.js"></script>
+  <script src="./blockly/blocks/tello/flip_backward.js"></script>
+  <script src="./blockly/blocks/tello/flip_right.js"></script>
+  <script src="./blockly/blocks/tello/flip_left.js"></script>
+  <script src="./blockly/blocks/tello/loop_with_variable.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="./css/ios.css">
+  <link rel="stylesheet" type="text/css" href="./blockly/prettify.css">
+  <link rel="stylesheet" href="./css/style.css">
+
+  <!-- Material -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="./lib/materialize/css/materialize.min.css"  media="screen,projection"/>
+
+  <script>
+    var aircraft = "Tello";
+    // Initialize Firebase
+    // var config = {
+    //   apiKey: "AIzaSyBcbAt69BGUjPiOucQbkcNNbcdaSmE-G0o",
+    //   authDomain: "fiery-inferno-4972.firebaseapp.com",
+    //   databaseURL: "https://fiery-inferno-4972.firebaseio.com",
+    //   storageBucket: "",
+    // };
+    // var config = {
+    //   apiKey: "AIzaSyAGgqla_TWV4wVgaQ87HG3VDT0igLA8KhU",
+    //   authDomain: "droneblocks-staging.firebaseapp.com",
+    //   databaseURL: "https://droneblocks-staging.firebaseio.com",
+    //   projectId: "droneblocks-staging",
+    //   storageBucket: "droneblocks-staging.appspot.com",
+    // };
+    // firebase.initializeApp(config);
+
+    // For Tello metric/standard units
+    if(localStorage.getItem('units') != null) {
+      var units = localStorage.getItem('units');
+      if (units == "metric") {
+        document.location.href = "tello_metric.html" + document.location.search;
+      }
+    }
+  </script>
+  <script src="./lib/firebase/firebase.js"></script>
+  <script src="./lib/firebase/firebase-firestore.js"></script>
+
+  <script src="./lib/materialize/js/materialize.min.js"></script>
+  <script src="./js/lib/main.min.js"></script>
+  <script src="./js/firebase.js"></script>
+</head>
+<body>
+
+  <!-- Side nav -->
+  <ul id="nav-mobile" class="side-nav">
+    <li class="center-align" id="login"><span class="waves-effect waves-light btn z-depth-0 light-blue btn-login">Login</span></li>
+    <li class="divider"></li>
+    <li><a href="#" id="newMission">New Mission</a></li>
+    <li class="divider"></li>
+    <li><a href="#" id="previewMission">Launch Mission</a></li>
+    <li class="divider"></li>
+    <li><a href="#" id="showCode">Show Mission Code</a></li>
+    <li class="divider"></li>
+    <li><a href="#" id="saveMission">Save Mission</a></li>
+    <li class="divider" id="d1"></li>
+    <li><a href="#" id="saveMissionAs">Save Mission As...</a></li>
+    <li class="divider" id="d2"></li>
+    <li><a href="ios_missions.html" id="myMissions">My Missions</a></li>
+    <li class="divider" id="d3"></li>
+    <li><a href="#" id="setUnits" data-units="metric">Switch to Metric Units</a></li>
+    <li class="divider" id="d4"></li>
+    <li><a href="#" id="connectTo">DJI Blocks</a></li>
+    <li class="divider" id="d5"></li>
+    <li class="center-align" id="logout"><span class="waves-effect waves-light btn z-depth-0 light-blue">Logout</span></li>
+  </ul>
+
+  <!-- Hamburger icon -->
+  <a href="#" data-activates="nav-mobile" class="right button-collapse show-on-large" id="hamburger"><i class="medium material-icons">menu</i></a>
+
+  <div id="missionTitle">Untitled Mission</div>
+
+  <!-- Save modal -->
+  <div id="saveMissionModal" class="modal">
+
+    <div class="modal-content">
+      <h6>Please enter a mission title below and click SAVE</h6>
+      <div class="input-field">
+        <input placeholder="Mission Title" id="title" type="text" />
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action waves-effect waves-light btn z-depth-0" id="saveModal">Save</a>
+      <a href="#!" class=" modal-action modal-close waves-effect waves-light btn-flat">Cancel</a>
+    </div>
+
+  </div>
+
+  <!-- Map preview modal -->
+  <div id="mapPreviewModal" class="modal" style="width: 95% !important; height: 100% !important">
+
+  </div>
+
+  <div id="blocklyArea"></div>
+
+  <!-- Code preview -->
+  <div id="codeView">
+    <pre id="code" class="prettyprint linenums"></pre>
+  </div>
+
+  <div id="blocklyDiv" style="position: absolute"></div>
+
+  <xml id="toolbox" style="display: none">
+    <category name="Takeoff">
+      <block type="takeoff"></block>
+      <block type="takeoff_after">
+        <value name="delay">
+          <shadow type="math_number">
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+    <category name="Navigation">
+      <block type="set_speed">
+        <value name="speed">
+          <shadow type="math_number">
+            <field name="NUM">30</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="fly_forward">
+        <value name="distance">
+          <shadow type="math_number">
+            <field name="NUM">20</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="fly_backward">
+        <value name="distance">
+          <shadow type="math_number">
+            <field name="NUM">20</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="fly_left">
+        <value name="distance">
+          <shadow type="math_number">
+            <field name="NUM">20</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="fly_right">
+        <value name="distance">
+          <shadow type="math_number">
+            <field name="NUM">20</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="fly_up">
+        <value name="distance">
+          <shadow type="math_number">
+            <field name="NUM">20</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="fly_down">
+        <value name="distance">
+          <shadow type="math_number">
+            <field name="NUM">20</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="fly_xyz">
+        <value name="xdistance">
+          <shadow type="math_number">
+            <field name="NUM">20</field>
+          </shadow>
+        </value>
+        <value name="ydistance">
+          <shadow type="math_number">
+            <field name="NUM">20</field>
+          </shadow>
+        </value>
+        <value name="zdistance">
+          <shadow type="math_number">
+            <field name="NUM">20</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="curve">
+        <value name="x1distance">
+          <shadow type="math_number">
+            <field name="NUM">25</field>
+          </shadow>
+        </value>
+        <value name="y1distance">
+          <shadow type="math_number">
+            <field name="NUM">25</field>
+          </shadow>
+        </value>
+        <value name="z1distance">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="x2distance">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="y2distance">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
+        <value name="z2distance">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="hover">
+        <value name="duration">
+          <shadow type="math_number">
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="yaw_right">
+        <value name="angle">
+          <shadow type="math_number">
+            <field name="NUM">90</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="yaw_left">
+        <value name="angle">
+          <shadow type="math_number">
+            <field name="NUM">90</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+    <category name="Camera">
+      <block type="photo"></block>
+      <block type="photo_interval">
+        <value name="photo_count">
+          <shadow type="math_number">
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+        <value name="interval">
+          <shadow type="math_number">
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+    <category name="Flip">
+      <block type="flip_forward"></block>
+      <block type="flip_backward"></block>
+      <block type="flip_left"></block>
+      <block type="flip_right"></block>
+    </category>
+    <category name="Loops">
+      <block type="loop">
+        <value name="TIMES">
+          <block type="math_number">
+            <field name="NUM">3</field>
+          </block>
+        </value>
+      </block>
+    </category>
+    <category name="Logic">
+      <block type="controls_if"></block>
+      <block type="logic_compare"></block>
+      <block type="logic_operation"></block>
+    </category>
+    <category name="Math">
+      <block type="math_number">
+        <field name="NUM">20</field>
+      </block>
+      <block type="math_arithmetic"></block>
+      <block type="math_number_property"></block>
+      <block type="math_single"></block>
+      <block type="math_trig"></block>
+      <block type="math_constant"></block>
+    </category>
+    <category name="Variables" custom="VARIABLE"></category>
+    <category name="Functions" custom="PROCEDURE"></category>
+    <category name="Land">
+      <block type="land_then_takeoff">
+        <value name="duration">
+          <shadow type="math_number">
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="land"></block>
+    </category>
+  </xml>
+  <script type="text/javascript" src="./lib/materialize/js/materialize.min.js"></script>
+</body>
+</html>
