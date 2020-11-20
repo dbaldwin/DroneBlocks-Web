@@ -414,18 +414,17 @@ function openFullscreen(elem) {
 }
 
 function launch() {
-    window.external.notify("Please work 123");
 
     let code = 'var mission="";'
-        code += Blockly.JavaScript.workspaceToCode(blockly.workspace);
-        code = eval(code);
-        window.commands = code.split("|"); //Send commands to simulator
-        // console.log(window.commands);
-        var os = helpers.getMobileOS();
+    code += Blockly.JavaScript.workspaceToCode(blockly.workspace);
+    code = eval(code);
+    window.commands = code.split("|"); //Send commands to simulator
+    // console.log(window.commands);
+    var os = helpers.getMobileOS();
 
-        console.log(os);
+    console.log(os);
 
-        window.external.notify(code);
+    window.external.notify(code);
 
         
 
