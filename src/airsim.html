@@ -19,13 +19,12 @@
   <script src="./blockly/blocks/tello/takeoff_after.js"></script>
   <script src="./blockly/blocks/tello/land_then_takeoff.js"></script>
   <script src="./blockly/blocks/tello/land.js"></script>
-  <script src="./blockly/blocks/tello/speed.js"></script>
-  <script src="./blockly/blocks/tello/fly_forward.js"></script>
-  <script src="./blockly/blocks/tello/fly_backward.js"></script>
-  <script src="./blockly/blocks/tello/fly_left.js"></script>
-  <script src="./blockly/blocks/tello/fly_right.js"></script>
-  <script src="./blockly/blocks/tello/fly_up.js"></script>
-  <script src="./blockly/blocks/tello/fly_down.js"></script>
+  <script src="./blockly/blocks/airsim/fly_forward.js"></script>
+  <script src="./blockly/blocks/airsim/fly_backward.js"></script>
+  <script src="./blockly/blocks/airsim/fly_left.js"></script>
+  <script src="./blockly/blocks/airsim/fly_right.js"></script>
+  <script src="./blockly/blocks/airsim/fly_up.js"></script>
+  <script src="./blockly/blocks/airsim/fly_down.js"></script>
   <script src="./blockly/blocks/tello/fly_xyz.js"></script>
   <script src="./blockly/blocks/tello/curve.js"></script>
   <script src="./blockly/blocks/tello/hover.js"></script>
@@ -153,52 +152,75 @@
       </block>
     </category>
     <category name="Navigation">
-      <block type="set_speed">
-        <value name="speed">
+      <block type="fly_forward">
+        <value name="xvelocity">
           <shadow type="math_number">
-            <field name="NUM">30</field>
+            <field name="NUM">5</field>
           </shadow>
         </value>
-      </block>
-      <block type="fly_forward">
-        <value name="distance">
+        <value name="duration">
           <shadow type="math_number">
-            <field name="NUM">20</field>
+            <field name="NUM">10</field>
           </shadow>
         </value>
       </block>
       <block type="fly_backward">
-        <value name="distance">
+        <value name="xvelocity">
           <shadow type="math_number">
-            <field name="NUM">20</field>
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+        <value name="duration">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
           </shadow>
         </value>
       </block>
       <block type="fly_left">
-        <value name="distance">
+        <value name="yvelocity">
           <shadow type="math_number">
-            <field name="NUM">20</field>
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+        <value name="duration">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
           </shadow>
         </value>
       </block>
       <block type="fly_right">
-        <value name="distance">
+        <value name="yvelocity">
           <shadow type="math_number">
-            <field name="NUM">20</field>
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+        <value name="duration">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
           </shadow>
         </value>
       </block>
       <block type="fly_up">
-        <value name="distance">
+        <value name="zvelocity">
           <shadow type="math_number">
-            <field name="NUM">20</field>
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+        <value name="duration">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
           </shadow>
         </value>
       </block>
       <block type="fly_down">
-        <value name="distance">
+        <value name="zvelocity">
           <shadow type="math_number">
-            <field name="NUM">20</field>
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+        <value name="duration">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
           </shadow>
         </value>
       </block>
@@ -288,7 +310,7 @@
         </value>
       </block>
     </category>
-    <category name="Flip">
+    <category name="Environment">
       <block type="flip_forward"></block>
       <block type="flip_backward"></block>
       <block type="flip_left"></block>
