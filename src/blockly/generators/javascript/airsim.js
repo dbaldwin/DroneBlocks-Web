@@ -303,22 +303,6 @@ Blockly.JavaScript['photo_interval'] = function(block) {
   return blockString;
 }; 
 
-Blockly.JavaScript['flip_forward'] = function(block) {
-  return 'mission+="|flip_forward";';
-};
-
-Blockly.JavaScript['flip_backward'] = function(block) {
-  return 'mission+="|flip_backward";';
-};
-
-Blockly.JavaScript['flip_left'] = function(block) {
-  return 'mission+="|flip_left";';
-};
-
-Blockly.JavaScript['flip_right'] = function(block) {
-  return 'mission+="|flip_right";';
-};
-
 Blockly.JavaScript['land_then_takeoff'] = function(block) {
   var duration = Blockly.JavaScript.valueToCode(block, 'duration', Blockly.JavaScript.ORDER_NONE);
 
@@ -339,6 +323,36 @@ Blockly.JavaScript['loop'] = function(block) {
   var branch = Blockly.JavaScript.statementToCode(block, 'DO').trim();
   var code = "for(var " + loopVar + " = 0; " + loopVar + " < " + repeats + "; " + loopVar + "++){" + branch + "}";
   return code;  
+};
+
+Blockly.JavaScript['wind'] = function(block) {
+  var north = Blockly.JavaScript.valueToCode(block, 'north', Blockly.JavaScript.ORDER_NONE);
+  var east = Blockly.JavaScript.valueToCode(block, 'east', Blockly.JavaScript.ORDER_NONE);
+  var down = Blockly.JavaScript.valueToCode(block, 'down', Blockly.JavaScript.ORDER_NONE);
+  
+  var blockString = 'mission+="|wind,';
+
+  if(isNaN(parseInt(north))) {
+    blockString += '" + eval(' + north + ') + "';
+  } else {
+    blockString += north;
+  }
+  
+  if(isNaN(parseInt(east))) {
+    blockString += '," + eval(' + east + ') + "';
+  } else {
+    blockString += ',' + east;
+  }
+  
+  if(isNaN(parseInt(down))) {
+    blockString += '," + eval(' + down + ') + "';
+  } else {
+    blockString += ',' + down;
+  }
+
+  blockString += '";';
+  
+  return blockString;
 };
 
 Blockly.JavaScript['weather_enable'] = function(block) {

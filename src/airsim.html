@@ -34,6 +34,7 @@
   <script src="./blockly/blocks/tello/yaw_left.js"></script>
   <script src="./blockly/blocks/tello/photo.js"></script>
   <script src="./blockly/blocks/tello/photo_interval.js"></script>
+  <script src="./blockly/blocks/airsim/wind.js"></script>
   <script src="./blockly/blocks/airsim/weather_enable.js"></script>
   <script src="./blockly/blocks/airsim/weather_set.js"></script>
   <script src="./blockly/blocks/airsim/trace_line.js"></script>
@@ -313,6 +314,23 @@
       </block>
     </category>
     <category name="Environment">
+      <block type="wind">
+        <value name="north">
+          <shadow type="math_number">
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+        <value name="east">
+          <shadow type="math_number">
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+        <value name="down">
+          <shadow type="math_number">
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+      </block>
       <block type="weather_enable"></block>
       <block type="weather_set">
         <value name="intensity">

@@ -2,17 +2,17 @@ Blockly.Blocks['weather_set'] = {
   init: function() {
     this.jsonInit(
       {
-        "message0": "set weather %1 and intensity %2 ",
+        "message0": "set weather: %1 and intensity %2 ",
         "args0": [
           {
             "type": "field_dropdown",
             "name": "weather",
             "options":
-              [["Rain", "0"],
-               ["Snow", "2"],
-               ["Leaves", "4"],
-               ["Dust", "6"],
-               ["Fog", "7"]]
+              [["rain", "0"],
+               ["snow", "2"],
+               ["leaves", "4"],
+               ["dust", "6"],
+               ["fog", "7"]]
           },
           {
             "type": "input_value",

@@ -2,7 +2,7 @@ Blockly.Blocks['trace_line'] = {
   init: function() {
     this.jsonInit(
       {
-        "message0": "set trace line color %1 and width %2 ",
+        "message0": "set trace line: %1 and width %2 ",
         "args0": [
           {
             "type": "field_colour",
