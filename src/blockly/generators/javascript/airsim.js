@@ -1,5 +1,13 @@
+Blockly.JavaScript['arm'] = function(block) {
+  return 'mission+="arm";';
+};
+
+Blockly.JavaScript['disarm'] = function(block) {
+  return 'mission+="|disarm;';
+};
+
 Blockly.JavaScript['takeoff'] = function(block) {
-  return 'mission+="takeoff";';
+  return 'mission+="|takeoff";';
 };
   
 Blockly.JavaScript['takeoff_after'] = function(block) {

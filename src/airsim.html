@@ -15,10 +15,12 @@
   <script src="./blockly/generators/javascript/airsim.js"></script>
   <script src="./blockly/generators/python/tello.js"></script>
   <script src="./blockly/msg/js/en.js"></script>
-  <script src="./blockly/blocks/tello/takeoff.js"></script>
+  <script src="./blockly/blocks/airsim/arm.js"></script>
+  <script src="./blockly/blocks/airsim/takeoff.js"></script>
   <script src="./blockly/blocks/tello/takeoff_after.js"></script>
   <script src="./blockly/blocks/tello/land_then_takeoff.js"></script>
-  <script src="./blockly/blocks/tello/land.js"></script>
+  <script src="./blockly/blocks/airsim/land.js"></script>
+  <script src="./blockly/blocks/airsim/disarm.js"></script>
   <script src="./blockly/blocks/airsim/fly_forward.js"></script>
   <script src="./blockly/blocks/airsim/fly_backward.js"></script>
   <script src="./blockly/blocks/airsim/fly_left.js"></script>
@@ -141,6 +143,7 @@
 
   <xml id="toolbox" style="display: none">
     <category name="Takeoff">
+      <block type="arm"></block>
       <block type="takeoff"></block>
       <block type="takeoff_after">
         <value name="delay">
@@ -361,6 +364,7 @@
         </value>
       </block>
       <block type="land"></block>
+      <block type="disarm"></block>
     </category>
   </xml>
   <script type="text/javascript" src="./lib/materialize/js/materialize.min.js"></script>
