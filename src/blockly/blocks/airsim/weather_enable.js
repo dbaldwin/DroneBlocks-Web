@@ -8,8 +8,8 @@ Blockly.Blocks['weather_enable'] = {
             "type": "field_dropdown",
             "name": "enable",
             "options":
-              [["enable", "1"],
-               ["disable", "0"]]
+              [["enable", "true"],
+               ["disable", "false"]]
           }
         ],
         "nextStatement": true,
