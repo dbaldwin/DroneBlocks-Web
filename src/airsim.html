@@ -25,7 +25,7 @@
   <script src="./blockly/blocks/airsim/fly_right.js"></script>
   <script src="./blockly/blocks/airsim/fly_up.js"></script>
   <script src="./blockly/blocks/airsim/fly_down.js"></script>
-  <script src="./blockly/blocks/tello/fly_xyz.js"></script>
+  <script src="./blockly/blocks/airsim/fly_to_position.js"></script>
   <script src="./blockly/blocks/tello/curve.js"></script>
   <script src="./blockly/blocks/tello/hover.js"></script>
   <script src="./blockly/blocks/tello/yaw_right.js"></script>
@@ -223,20 +223,20 @@
           </shadow>
         </value>
       </block>
-      <block type="fly_xyz">
-        <value name="xdistance">
+      <block type="fly_to_position">
+        <value name="xposition">
           <shadow type="math_number">
-            <field name="NUM">20</field>
+            <field name="NUM">15</field>
           </shadow>
         </value>
-        <value name="ydistance">
+        <value name="yposition">
           <shadow type="math_number">
-            <field name="NUM">20</field>
+            <field name="NUM">15</field>
           </shadow>
         </value>
-        <value name="zdistance">
+        <value name="zposition">
           <shadow type="math_number">
-            <field name="NUM">20</field>
+            <field name="NUM">15</field>
           </shadow>
         </value>
       </block>
