@@ -3,7 +3,7 @@ Blockly.JavaScript['arm'] = function(block) {
 };
 
 Blockly.JavaScript['disarm'] = function(block) {
-  return 'mission+="|disarm;';
+  return 'mission+="|disarm";';
 };
 
 Blockly.JavaScript['takeoff'] = function(block) {
