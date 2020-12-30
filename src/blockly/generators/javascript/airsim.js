@@ -20,6 +20,11 @@ Blockly.JavaScript['takeoff_after'] = function(block) {
   }
 };
 
+Blockly.JavaScript['coordinate_system'] = function(block) {
+  var cs = block.getFieldValue("coordinate_system");
+  return 'mission+="|coordinate_system,' + cs + '";';
+};
+
 Blockly.JavaScript['fly_forward'] = function(block) {
   var xvelocity = Blockly.JavaScript.valueToCode(block, 'xvelocity', Blockly.JavaScript.ORDER_NONE);
   var duration = Blockly.JavaScript.valueToCode(block, 'duration', Blockly.JavaScript.ORDER_NONE);
