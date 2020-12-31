@@ -1,20 +1,20 @@
-Blockly.Blocks['fly_to_position'] = {
+Blockly.Blocks['fly_to_location'] = {
     init: function() {
       this.jsonInit(
         {
-          "message0": "fly to position: x %1 y %2 z %3 meters",
+          "message0": "fly to location: x %1 y %2 z %3 meters",
           "args0": [
             {
               "type": "input_value",
-              "name": "xposition"
+              "name": "x"
             },
             {
               "type": "input_value",
-              "name": "yposition"
+              "name": "y"
             },
             {
               "type": "input_value",
-              "name": "zposition"
+              "name": "z"
             }
           ],
           "previousStatement": true,

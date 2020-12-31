@@ -171,29 +171,29 @@ Blockly.JavaScript['fly_down'] = function(block) {
 
 };
 
-Blockly.JavaScript['fly_to_position'] = function(block) {
-  var xposition = Blockly.JavaScript.valueToCode(block, 'xposition', Blockly.JavaScript.ORDER_NONE);
-  var yposition = Blockly.JavaScript.valueToCode(block, 'yposition', Blockly.JavaScript.ORDER_NONE);
-  var zposition = Blockly.JavaScript.valueToCode(block, 'zposition', Blockly.JavaScript.ORDER_NONE);
+Blockly.JavaScript['fly_to_location'] = function(block) {
+  var x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_NONE);
+  var y = Blockly.JavaScript.valueToCode(block, 'y', Blockly.JavaScript.ORDER_NONE);
+  var z = Blockly.JavaScript.valueToCode(block, 'z', Blockly.JavaScript.ORDER_NONE);
   
-  var blockString = 'mission+="|fly_to_position,';
+  var blockString = 'mission+="|fly_to_location,';
 
   if(isNaN(parseInt(xposition))) {
-    blockString += '" + eval(' + xposition + ') + "';
+    blockString += '" + eval(' + x + ') + "';
   } else {
-    blockString += xposition;
+    blockString += x;
   }
   
-  if(isNaN(parseInt(yposition))) {
-    blockString += '," + eval(' + yposition + ') + "';
+  if(isNaN(parseInt(y))) {
+    blockString += '," + eval(' + y + ') + "';
   } else {
-    blockString += ',' + yposition;
+    blockString += ',' + y;
   }
   
-  if(isNaN(parseInt(zposition))) {
-    blockString += '," + eval(' + zposition + ') + "';
+  if(isNaN(parseInt(z))) {
+    blockString += '," + eval(' + z + ') + "';
   } else {
-    blockString += ',' + zposition;
+    blockString += ',' + z;
   }
 
   blockString += '";';

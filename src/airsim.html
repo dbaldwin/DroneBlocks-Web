@@ -27,7 +27,7 @@
   <script src="./blockly/blocks/airsim/fly_forward.js"></script>
   <script src="./blockly/blocks/airsim/fly_backward.js"></script>
   <script src="./blockly/blocks/airsim/fly_left.js"></script>
-  <script src="./blockly/blocks/airsim/fly_to_position.js"></script>
+  <script src="./blockly/blocks/airsim/fly_to_location.js"></script>
   <script src="./blockly/blocks/tello/curve.js"></script>
   <script src="./blockly/blocks/tello/hover.js"></script>
   <script src="./blockly/blocks/tello/yaw_right.js"></script>
@@ -184,7 +184,7 @@
       <block type="fly_left">
         <value name="yvelocity">
           <shadow type="math_number">
-            <field name="NUM">5</field>
+            <field name="NUM">-5</field>
           </shadow>
         </value>
         <value name="duration">
@@ -193,18 +193,18 @@
           </shadow>
         </value>
       </block>
-      <block type="fly_to_position">
-        <value name="xposition">
+      <block type="fly_to_location">
+        <value name="x">
           <shadow type="math_number">
             <field name="NUM">15</field>
           </shadow>
         </value>
-        <value name="yposition">
+        <value name="y">
           <shadow type="math_number">
             <field name="NUM">15</field>
           </shadow>
         </value>
-        <value name="zposition">
+        <value name="z">
           <shadow type="math_number">
             <field name="NUM">-15</field>
           </shadow>
