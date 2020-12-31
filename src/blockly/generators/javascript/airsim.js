@@ -25,6 +25,11 @@ Blockly.JavaScript['coordinate_system'] = function(block) {
   return 'mission+="|coordinate_system,' + cs + '";';
 };
 
+Blockly.JavaScript['drive_train'] = function(block) {
+  var dt = block.getFieldValue("drive_train");
+  return 'mission+="|drive_train,' + dt + '";';
+};
+
 Blockly.JavaScript['fly_forward'] = function(block) {
   var xvelocity = Blockly.JavaScript.valueToCode(block, 'xvelocity', Blockly.JavaScript.ORDER_NONE);
   var duration = Blockly.JavaScript.valueToCode(block, 'duration', Blockly.JavaScript.ORDER_NONE);
