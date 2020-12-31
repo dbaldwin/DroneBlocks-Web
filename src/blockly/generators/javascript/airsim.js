@@ -322,6 +322,10 @@ Blockly.JavaScript['land'] = function(block) {
   return 'mission+="|land";';
 };
 
+Blockly.JavaScript['return_home'] = function(block) {
+  return 'mission+="|return_home";';
+};
+
 Blockly.JavaScript['loop'] = function(block) {
   var loopVar = Blockly.JavaScript.variableDB_.getDistinctName('count', Blockly.Variables.NAME_TYPE);
   var repeats = Blockly.JavaScript.valueToCode(block, 'TIMES', Blockly.JavaScript.ORDER_NONE);  

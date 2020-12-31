@@ -71,4 +71,6 @@ gulp.task('watch', () => {
     gulp.watch('src/**/*.*', ['views']);
 })
 
-gulp.task('default', gulp.series(['build', 'serve', 'watch', 'views', 'js']))
+//gulp.task('default', gulp.series(['build', 'serve', 'watch', 'views', 'js']))
+
+gulp.task('default', ['serve', 'watch', 'views', 'js'])
