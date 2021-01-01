@@ -178,7 +178,7 @@ Blockly.JavaScript['fly_to_location'] = function(block) {
   
   var blockString = 'mission+="|fly_to_location,';
 
-  if(isNaN(parseInt(xposition))) {
+  if(isNaN(parseInt(x))) {
     blockString += '" + eval(' + x + ') + "';
   } else {
     blockString += x;
