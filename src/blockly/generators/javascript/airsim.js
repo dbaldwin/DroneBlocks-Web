@@ -30,10 +30,10 @@ Blockly.JavaScript['drive_train'] = function(block) {
   return 'mission+="|drive_train,' + dt + '";';
 };
 
-Blockly.JavaScript['fly_forward'] = function(block) {
+Blockly.JavaScript['fly_x'] = function(block) {
   var xvelocity = Blockly.JavaScript.valueToCode(block, 'xvelocity', Blockly.JavaScript.ORDER_NONE);
   var duration = Blockly.JavaScript.valueToCode(block, 'duration', Blockly.JavaScript.ORDER_NONE);
-  var blockString = 'mission+="|fly_forward,';
+  var blockString = 'mission+="|fly_x,';
 
   if(isNaN(parseInt(xvelocity))) {
     blockString += '" + eval(' + xvelocity + ') + "';
@@ -53,58 +53,10 @@ Blockly.JavaScript['fly_forward'] = function(block) {
 
 };
 
-Blockly.JavaScript['fly_backward'] = function(block) {
-  // Prepend negative for backward flight
-  var xvelocity = "-" + Blockly.JavaScript.valueToCode(block, 'xvelocity', Blockly.JavaScript.ORDER_NONE);
-  var duration = Blockly.JavaScript.valueToCode(block, 'duration', Blockly.JavaScript.ORDER_NONE);
-  var blockString = 'mission+="|fly_backward,';
-
-  if(isNaN(parseInt(xvelocity))) {
-    blockString += '" + eval(' + xvelocity + ') + "';
-  } else {
-    blockString += xvelocity;
-  }
-
-  if(isNaN(parseInt(duration))) {
-    blockString += '," + eval(' + duration + ') + "';
-  } else {
-    blockString += ',' + duration;
-  }
-
-  blockString += '";';
-
-  return blockString;
-
-};
-
-Blockly.JavaScript['fly_left'] = function(block) {
-  // Prepend negative for left flight
-  var yvelocity = "-" + Blockly.JavaScript.valueToCode(block, 'yvelocity', Blockly.JavaScript.ORDER_NONE);
-  var duration = Blockly.JavaScript.valueToCode(block, 'duration', Blockly.JavaScript.ORDER_NONE);
-  var blockString = 'mission+="|fly_left,';
-
-  if(isNaN(parseInt(yvelocity))) {
-    blockString += '" + eval(' + yvelocity + ') + "';
-  } else {
-    blockString += yvelocity;
-  }
-
-  if(isNaN(parseInt(duration))) {
-    blockString += '," + eval(' + duration + ') + "';
-  } else {
-    blockString += ',' + duration;
-  }
-
-  blockString += '";';
-
-  return blockString;
-
-};
-
-Blockly.JavaScript['fly_right'] = function(block) {
+Blockly.JavaScript['fly_y'] = function(block) {
   var yvelocity = Blockly.JavaScript.valueToCode(block, 'yvelocity', Blockly.JavaScript.ORDER_NONE);
   var duration = Blockly.JavaScript.valueToCode(block, 'duration', Blockly.JavaScript.ORDER_NONE);
-  var blockString = 'mission+="|fly_right,';
+  var blockString = 'mission+="|fly_y,';
 
   if(isNaN(parseInt(yvelocity))) {
     blockString += '" + eval(' + yvelocity + ') + "';
@@ -124,34 +76,10 @@ Blockly.JavaScript['fly_right'] = function(block) {
 
 };
 
-Blockly.JavaScript['fly_up'] = function(block) {
-  // Prepend negative for up flight
-  var zvelocity = "-" + Blockly.JavaScript.valueToCode(block, 'zvelocity', Blockly.JavaScript.ORDER_NONE);
-  var duration = Blockly.JavaScript.valueToCode(block, 'duration', Blockly.JavaScript.ORDER_NONE);
-  var blockString = 'mission+="|fly_up,';
-
-  if(isNaN(parseInt(zvelocity))) {
-    blockString += '" + eval(' + zvelocity + ') + "';
-  } else {
-    blockString += zvelocity;
-  }
-
-  if(isNaN(parseInt(duration))) {
-    blockString += '," + eval(' + duration + ') + "';
-  } else {
-    blockString += ',' + duration;
-  }
-
-  blockString += '";';
-
-  return blockString;
-
-};
-
-Blockly.JavaScript['fly_down'] = function(block) {
+Blockly.JavaScript['fly_z'] = function(block) {
   var zvelocity = Blockly.JavaScript.valueToCode(block, 'zvelocity', Blockly.JavaScript.ORDER_NONE);
   var duration = Blockly.JavaScript.valueToCode(block, 'duration', Blockly.JavaScript.ORDER_NONE);
-  var blockString = 'mission+="|fly_down,';
+  var blockString = 'mission+="|fly_z,';
 
   if(isNaN(parseInt(zvelocity))) {
     blockString += '" + eval(' + zvelocity + ') + "';

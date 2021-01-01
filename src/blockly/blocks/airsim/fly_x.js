@@ -1,12 +1,12 @@
-Blockly.Blocks['fly_down'] = {
+Blockly.Blocks['fly_x'] = {
     init: function() {
       this.jsonInit(
         {
-          "message0": "fly down %1 m/s for %2 seconds",
+          "message0": "fly x: %1 m/s for %2 seconds",
           "args0": [
             {
               "type": "input_value",
-              "name": "zvelocity"
+              "name": "xvelocity"
             },
             {
               "type": "input_value",
