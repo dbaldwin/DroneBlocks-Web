@@ -130,6 +130,44 @@ Blockly.JavaScript['fly_to_location'] = function(block) {
   
 };
 
+Blockly.JavaScript['fly_rpy'] = function(block) {
+  var r = Blockly.JavaScript.valueToCode(block, 'r', Blockly.JavaScript.ORDER_NONE);
+  var p = Blockly.JavaScript.valueToCode(block, 'p', Blockly.JavaScript.ORDER_NONE);
+  var y = Blockly.JavaScript.valueToCode(block, 'y', Blockly.JavaScript.ORDER_NONE);
+  var seconds = Blockly.JavaScript.valueToCode(block, 'seconds', Blockly.JavaScript.ORDER_NONE);
+  
+  var blockString = 'mission+="|fly_rpy,';
+
+  if(isNaN(parseInt(r))) {
+    blockString += '" + eval(' + r + ') + "';
+  } else {
+    blockString += r;
+  }
+  
+  if(isNaN(parseInt(p))) {
+    blockString += '," + eval(' + p + ') + "';
+  } else {
+    blockString += ',' + p;
+  }
+  
+  if(isNaN(parseInt(y))) {
+    blockString += '," + eval(' + y + ') + "';
+  } else {
+    blockString += ',' + y;
+  }
+
+  if(isNaN(parseInt(seconds))) {
+    blockString += '," + eval(' + seconds + ') + "';
+  } else {
+    blockString += ',' + seconds;
+  }
+
+  blockString += '";';
+  
+  return blockString;
+  
+};
+
 Blockly.JavaScript['curve'] = function(block) {
   var x1distance = Blockly.JavaScript.valueToCode(block, 'x1distance', Blockly.JavaScript.ORDER_NONE);
   var y1distance = Blockly.JavaScript.valueToCode(block, 'y1distance', Blockly.JavaScript.ORDER_NONE);
