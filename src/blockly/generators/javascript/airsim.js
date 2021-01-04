@@ -232,26 +232,38 @@ Blockly.JavaScript['hover'] = function(block) {
   }
 };
 
-Blockly.JavaScript['yaw_right'] = function(block) {
+Blockly.JavaScript['rotate_to_yaw'] = function(block) {
   var angle = Blockly.JavaScript.valueToCode(block, 'angle', Blockly.JavaScript.ORDER_NONE);
 
   if(isNaN(parseInt(angle))) {
-    return 'mission+="|yaw_right," + eval(' + angle + ') + "";';
+    return 'mission+="|rotate_to_yaw," + eval(' + angle + ') + "";';
   } else {
-    return 'mission+="|yaw_right,' + angle + '";';
+    return 'mission+="|rotate_to_yaw,' + angle + '";';
   }
 };
 
-Blockly.JavaScript['yaw_left'] = function(block) {
+Blockly.JavaScript['rotate_yaw_rate'] = function(block) {
   var angle = Blockly.JavaScript.valueToCode(block, 'angle', Blockly.JavaScript.ORDER_NONE);
+  var seconds = Blockly.JavaScript.valueToCode(block, 'seconds', Blockly.JavaScript.ORDER_NONE);
+  var blockString = 'mission+="|rotate_yaw_rate,';
 
   if(isNaN(parseInt(angle))) {
-    return 'mission+="|yaw_left," + eval(' + angle + ') + "";';
+    blockString += '" + eval(' + angle + ') + "';
   } else {
-    return 'mission+="|yaw_left,' + angle + '";';
+    blockString += angle;
   }
-};
 
+  if(isNaN(parseInt(seconds))) {
+    blockString += '," + eval(' + seconds + ') + "';
+  } else {
+    blockString += ',' + seconds;
+  }
+
+  blockString += '";';
+
+  return blockString;
+
+};
 Blockly.JavaScript['photo'] = function(block) {
   return 'mission+="|photo";';
 };

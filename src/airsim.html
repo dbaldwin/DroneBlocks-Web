@@ -29,10 +29,10 @@
   <script src="./blockly/blocks/airsim/fly_z.js"></script>
   <script src="./blockly/blocks/airsim/fly_to_location.js"></script>
   <script src="./blockly/blocks/airsim/fly_rpy.js"></script>
+  <script src="./blockly/blocks/airsim/rotate_to_yaw.js"></script>
+  <script src="./blockly/blocks/airsim/rotate_yaw_rate.js"></script>
   <script src="./blockly/blocks/tello/curve.js"></script>
   <script src="./blockly/blocks/tello/hover.js"></script>
-  <script src="./blockly/blocks/tello/yaw_right.js"></script>
-  <script src="./blockly/blocks/tello/yaw_left.js"></script>
   <script src="./blockly/blocks/tello/photo.js"></script>
   <script src="./blockly/blocks/tello/photo_interval.js"></script>
   <script src="./blockly/blocks/airsim/wind.js"></script>
@@ -272,17 +272,22 @@
           </shadow>
         </value>
       </block>
-      <block type="yaw_right">
+      <block type="rotate_to_yaw">
         <value name="angle">
           <shadow type="math_number">
             <field name="NUM">90</field>
           </shadow>
         </value>
       </block>
-      <block type="yaw_left">
+      <block type="rotate_yaw_rate">
         <value name="angle">
           <shadow type="math_number">
-            <field name="NUM">90</field>
+            <field name="NUM">30</field>
+          </shadow>
+        </value>
+        <value name="seconds">
+          <shadow type="math_number">
+            <field name="NUM">3</field>
           </shadow>
         </value>
       </block>
