@@ -419,36 +419,27 @@ function launch() {
     code += Blockly.JavaScript.workspaceToCode(blockly.workspace);
     code = eval(code);
     window.commands = code.split("|"); //Send commands to simulator
-    // console.log(window.commands);
-    var os = helpers.getMobileOS();
+    console.log(window.commands);
 
-    console.log(os);
+    // Send from IPC renderer to main process
+    ipcRenderer.send("launch", code);
 
-    window.external.notify(code);
 
+    // This was for C# UWP
+    // window.external.notify(code);
         
-
-        // if (os == 'iOS') {
-
-        //     window.webkit.messageHandlers.observe.postMessage(code);
-
-        // } else if (os == 'Android') {
-
-        //     Android.confirmMission(code);
-
-        // } else if (aircraft == "DJI") {
-
-        //     $("#mapPreviewModal").html("<iframe src='map_preview.html?code=" + escape(code) + "' width='100%' height='100%'></iframe>");
-        //     $("#mapPreviewModal").openModal();
-
-        //     // Chrome App case
-        // } else {
-
-        //     // Appwindow is so we can post to the chrome app
-        //     appWindow.postMessage(code, appOrigin);
-
-        // }
 }
+
+// Receive worldPosition from main process and update UI
+ipcRenderer.on("updatePosition", (event, message) => {
+    document.getElementById("x_val").textContent = "x: " + message.worldPosition.x_val, + ", "
+    document.getElementById("y_val").textContent = "y: " + message.worldPosition.y_val, + ", "
+    document.getElementById("z_val").textContent = "z: " + message.worldPosition.z_val
+
+    document.getElementById("lat").textContent = "lat: " + message.gpsPosition.lat, + ", "
+    document.getElementById("lon").textContent = "lon: " + message.gpsPosition.lon, + ", "
+    document.getElementById("alt").textContent = "alt: " + message.gpsPosition.alt
+})
 
 // We only want to launch with the T key on simulator
 // Otherwise this will trigger on Chrome app and possibly mobile
