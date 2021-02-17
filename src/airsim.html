@@ -35,6 +35,7 @@
   <script src="./blockly/blocks/airsim/fly_rpy.js"></script>
   <script src="./blockly/blocks/airsim/rotate_to_yaw.js"></script>
   <script src="./blockly/blocks/airsim/rotate_yaw_rate.js"></script>
+  <script src="./blockly/blocks/airsim/pitch_gimbal.js"></script>
   <script src="./blockly/blocks/tello/curve.js"></script>
   <script src="./blockly/blocks/tello/hover.js"></script>
   <script src="./blockly/blocks/tello/photo.js"></script>
@@ -149,6 +150,9 @@
     <span id="lat">lat:</span>
     <span id="lon">, lon:</span>
     <span id="alt">, alt:</span>
+    |
+    Flying:
+    <span id="flying"></span>
   </div>
 
   <div id="blocklyArea"></div>
@@ -320,6 +324,13 @@
         <value name="interval">
           <shadow type="math_number">
             <field name="NUM">5</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="pitch_gimbal">
+        <value name="angle">
+          <shadow type="math_number">
+            <field name="NUM">-45</field>
           </shadow>
         </value>
       </block>

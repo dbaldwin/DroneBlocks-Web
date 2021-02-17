@@ -289,7 +289,22 @@ Blockly.JavaScript['photo_interval'] = function(block) {
   blockString += '";';
 
   return blockString;
-}; 
+};
+
+Blockly.JavaScript['pitch_gimbal'] = function(block) {
+  var angle = Blockly.JavaScript.valueToCode(block, 'angle', Blockly.JavaScript.ORDER_NONE);
+  var blockString = 'mission+="|pitch_gimbal,';
+
+  if(isNaN(parseInt(angle))) {
+    blockString += '" + eval(' + angle + ') + "';
+  } else {
+    blockString += angle;
+  }
+
+  blockString += '";';
+
+  return blockString;
+};
 
 Blockly.JavaScript['land_then_takeoff'] = function(block) {
   var duration = Blockly.JavaScript.valueToCode(block, 'duration', Blockly.JavaScript.ORDER_NONE);
