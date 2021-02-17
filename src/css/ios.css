@@ -140,49 +140,64 @@ html, body {
   div#blockly-7 .blocklyTreeSelected {
     background-color: #373e66 !important;
   }
-  
-  /* Variables */
+
+  /* Text */
   div#blockly-8 {
-    background-color: #a65a80 !important;
+    background-color: #5ba58c !important;
     padding: 10px !important;
     color: #FFFFFF !important;
   }
   
   div#blockly-8 .blocklyTreeRow:hover {
-    background-color: #723e58 !important;
+    background-color: #1f8563 !important;
   }
   
   div#blockly-8 .blocklyTreeSelected {
-    background-color: #723e58 !important;
+    background-color: #1f8563 !important;
   }
-  
-  /* Functions */
+
+  /* Variables */
   div#blockly-9 {
-    background-color: #995ba5 !important;
+    background-color: #a65a80 !important;
     padding: 10px !important;
     color: #FFFFFF !important;
   }
   
   div#blockly-9 .blocklyTreeRow:hover {
-    background-color: #9400D3 !important;
+    background-color: #723e58 !important;
   }
   
   div#blockly-9 .blocklyTreeSelected {
-    background-color: #9400D3 !important;
+    background-color: #723e58 !important;
   }
   
-  /* Land */
+  /* Functions */
   div#blockly-a {
-    background-color: #E76F51 !important;
+    background-color: #995ba5 !important;
     padding: 10px !important;
     color: #FFFFFF !important;
   }
   
   div#blockly-a .blocklyTreeRow:hover {
-    background-color: #B2553E !important;
+    background-color: #9400D3 !important;
   }
   
   div#blockly-a .blocklyTreeSelected {
+    background-color: #9400D3 !important;
+  }
+  
+  /* Land */
+  div#blockly-b {
+    background-color: #E76F51 !important;
+    padding: 10px !important;
+    color: #FFFFFF !important;
+  }
+  
+  div#blockly-b .blocklyTreeRow:hover {
+    background-color: #B2553E !important;
+  }
+  
+  div#blockly-b .blocklyTreeSelected {
     background-color: #B2553E !important;
   }
   /* End block category styling */

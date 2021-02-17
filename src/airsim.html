@@ -382,6 +382,100 @@
       <block type="math_trig"></block>
       <block type="math_constant"></block>
     </category>
+    <category name="Text">
+      <block type="text">
+        <field name="TEXT"></field>  
+      </block>
+      <block type="text_join">
+				<mutation items="2"></mutation>
+			</block>
+			<block type="text_append">
+				<field name="VAR" id="SmwB.@#2p5}McHySTA:V">item</field>
+				<value name="TEXT">
+					<shadow type="text">
+						<field name="TEXT"></field>
+					</shadow>
+				</value>
+			</block>
+			<block type="text_length">
+				<value name="VALUE">
+					<shadow type="text">
+						<field name="TEXT">abc</field>
+					</shadow>
+				</value>
+			</block>
+			<block type="text_isEmpty">
+				<value name="VALUE">
+					<shadow type="text">
+						<field name="TEXT"></field>
+					</shadow>
+				</value>
+			</block>
+			<block type="text_indexOf">
+				<field name="END">FIRST</field>
+				<value name="VALUE">
+					<block type="variables_get">
+						<field name="VAR" id="C^Ay41*aH0(G-jwM$x4w">text</field>
+					</block>
+				</value>
+				<value name="FIND">
+					<shadow type="text">
+						<field name="TEXT">abc</field>
+					</shadow>
+				</value>
+			</block>
+			<block type="text_charAt">
+				<mutation at="true"></mutation>
+				<field name="WHERE">FROM_START</field>
+				<value name="VALUE">
+					<block type="variables_get">
+						<field name="VAR" id="C^Ay41*aH0(G-jwM$x4w">text</field>
+					</block>
+				</value>
+			</block>
+			<block type="text_getSubstring">
+				<mutation at1="true" at2="true"></mutation>
+				<field name="WHERE1">FROM_START</field>
+				<field name="WHERE2">FROM_START</field>
+				<value name="STRING">
+					<block type="variables_get">
+						<field name="VAR" id="C^Ay41*aH0(G-jwM$x4w">text</field>
+					</block>
+				</value>
+			</block>
+			<block type="text_changeCase">
+				<field name="CASE">UPPERCASE</field>
+				<value name="TEXT">
+					<shadow type="text">
+						<field name="TEXT">abc</field>
+					</shadow>
+				</value>
+			</block>
+			<block type="text_trim">
+				<field name="MODE">BOTH</field>
+				<value name="TEXT">
+					<shadow type="text">
+						<field name="TEXT">abc</field>
+					</shadow>
+				</value>
+			</block>
+			<block type="text_print">
+				<value name="TEXT">
+					<shadow type="text">
+						<field name="TEXT">abc</field>
+					</shadow>
+				</value>
+			</block>
+			<block type="text_prompt_ext">
+				<mutation type="TEXT"></mutation>
+				<field name="TYPE">TEXT</field>
+				<value name="TEXT">
+					<shadow type="text">
+						<field name="TEXT">abc</field>
+					</shadow>
+				</value>
+			</block>
+    </category>
     <category name="Variables" custom="VARIABLE"></category>
     <category name="Functions" custom="PROCEDURE"></category>
     <category name="Land">
