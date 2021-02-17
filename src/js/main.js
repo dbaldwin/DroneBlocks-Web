@@ -439,6 +439,8 @@ ipcRenderer.on("updatePosition", (event, message) => {
     document.getElementById("lat").textContent = "lat: " + message.gpsPosition.lat, + ", "
     document.getElementById("lon").textContent = "lon: " + message.gpsPosition.lon, + ", "
     document.getElementById("alt").textContent = "alt: " + message.gpsPosition.alt
+
+    document.getElementById("flying").textContent = message.isDroneFlying
 })
 
 // We only want to launch with the T key on simulator
