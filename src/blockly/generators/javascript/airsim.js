@@ -1,13 +1,13 @@
 Blockly.JavaScript['arm'] = function(block) {
-  return 'mission+="arm";';
+  return 'mission+="arm,' + block.id + '";';
 };
 
 Blockly.JavaScript['disarm'] = function(block) {
-  return 'mission+="|disarm";';
+  return 'mission+="|disarm,' + block.id + '";';
 };
 
 Blockly.JavaScript['takeoff'] = function(block) {
-  return 'mission+="|takeoff";';
+  return 'mission+="|takeoff,' + block.id + '";';
 };
   
 Blockly.JavaScript['takeoff_after'] = function(block) {
@@ -265,7 +265,7 @@ Blockly.JavaScript['rotate_yaw_rate'] = function(block) {
 
 };
 Blockly.JavaScript['photo'] = function(block) {
-  return 'mission+="|photo";';
+  return 'mission+="|photo,' + block.id + '";';
 };
 
 Blockly.JavaScript['photo_interval'] = function(block) {
@@ -317,7 +317,7 @@ Blockly.JavaScript['land_then_takeoff'] = function(block) {
 };
 
 Blockly.JavaScript['land'] = function(block) {
-  return 'mission+="|land";';
+  return 'mission+="|land,' + block.id + '";';
 };
 
 Blockly.JavaScript['return_home'] = function(block) {

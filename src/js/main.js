@@ -443,6 +443,11 @@ ipcRenderer.on("updatePosition", (event, message) => {
     document.getElementById("flying").textContent = message.isDroneFlying
 })
 
+// Receive block id from main process and update block on canvas
+ipcRenderer.on("highlightBlock", (event, message) => {
+    Blockly.getMainWorkspace().highlightBlock(message.id)
+})
+
 // We only want to launch with the T key on simulator
 // Otherwise this will trigger on Chrome app and possibly mobile
 if (document.location.href.includes("simulator")) {
