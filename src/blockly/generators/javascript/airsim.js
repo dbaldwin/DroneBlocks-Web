@@ -103,8 +103,9 @@ Blockly.JavaScript['fly_to_location'] = function(block) {
   var x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_NONE);
   var y = Blockly.JavaScript.valueToCode(block, 'y', Blockly.JavaScript.ORDER_NONE);
   var z = Blockly.JavaScript.valueToCode(block, 'z', Blockly.JavaScript.ORDER_NONE);
+  let blockId = encodeURIComponent(block.id)
   
-  var blockString = 'mission+="|fly_to_location,';
+  var blockString = 'mission+="|fly_to_location,' + blockId + ',';
 
   if(isNaN(parseInt(x))) {
     blockString += '" + eval(' + x + ') + "';
@@ -268,14 +269,15 @@ Blockly.JavaScript['rotate_yaw_rate'] = function(block) {
 
 };
 Blockly.JavaScript['photo'] = function(block) {
-  return 'mission+="|photo,' + block.id + '";';
+  return 'mission+="|photo,' + encodeURIComponent(block.id) + '";';
 };
 
 Blockly.JavaScript['photo_interval'] = function(block) {
   var photo_count = Blockly.JavaScript.valueToCode(block, 'photo_count', Blockly.JavaScript.ORDER_NONE);
   var interval = Blockly.JavaScript.valueToCode(block, 'interval', Blockly.JavaScript.ORDER_NONE);
+  let blockId = encodeURIComponent(block.id)
 
-  var blockString = 'mission+="|photo_interval,';
+  var blockString = 'mission+="|photo_interval,' + blockId + ',';
 
   if(isNaN(parseInt(photo_count))) {
     blockString += '" + eval(' + photo_count + ') + "';
@@ -296,7 +298,7 @@ Blockly.JavaScript['photo_interval'] = function(block) {
 
 Blockly.JavaScript['pitch_gimbal'] = function(block) {
   var angle = Blockly.JavaScript.valueToCode(block, 'angle', Blockly.JavaScript.ORDER_NONE);
-  var blockString = 'mission+="|pitch_gimbal,';
+  var blockString = 'mission+="|pitch_gimbal,' + encodeURIComponent(block.id) + ',';
 
   if(isNaN(parseInt(angle))) {
     blockString += '" + eval(' + angle + ') + "';
@@ -311,11 +313,12 @@ Blockly.JavaScript['pitch_gimbal'] = function(block) {
 
 Blockly.JavaScript['land_then_takeoff'] = function(block) {
   var duration = Blockly.JavaScript.valueToCode(block, 'duration', Blockly.JavaScript.ORDER_NONE);
+  var blockId = encodeURIComponent(block.id)
 
   if(isNaN(parseInt(duration))) {
-    return 'mission+="|land|hover," + eval(' + duration + ') + "|takeoff";';
+    return 'mission+="|land,' + blockId + '|hover,' + blockId + '," + eval(' + duration + ') + "|takeoff,' + blockId + '";';
   } else {
-    return 'mission+="|land|hover,' + duration + '|takeoff";';
+    return 'mission+="|land,' + blockId + '|hover,' + blockId + ',' + duration + '|takeoff,' + blockId + '";';
   }
 };
 
@@ -324,7 +327,7 @@ Blockly.JavaScript['land'] = function(block) {
 };
 
 Blockly.JavaScript['return_home'] = function(block) {
-  return 'mission+="|return_home,' + block.id + '";';
+  return 'mission+="|return_home,' + encodeURIComponent(block.id) + '";';
 };
 
 Blockly.JavaScript['loop'] = function(block) {
