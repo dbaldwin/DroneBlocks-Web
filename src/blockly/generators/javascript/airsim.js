@@ -370,13 +370,13 @@ Blockly.JavaScript['wind'] = function(block) {
 
 Blockly.JavaScript['weather_enable'] = function(block) {
   var enable = block.getFieldValue("enable");
-  return 'mission+="|weather_enable,' + enable + '";';
+  return 'mission+="|weather_enable,' + encodeURIComponent(block.id) + ',' + enable + '";';
 };
 
 Blockly.JavaScript['weather_set'] = function(block) {
   var weather = block.getFieldValue("weather");
   var intensity = Blockly.JavaScript.valueToCode(block, 'intensity', Blockly.JavaScript.ORDER_NONE);
-  var blockString = 'mission+="|weather_set,' + weather + ',';
+  var blockString = 'mission+="|weather_set,' + encodeURIComponent(block.id) + ',' + weather + ',';
 
   if(isNaN(parseInt(intensity))) {
     blockString += '" + eval(' + intensity + ') + "';
