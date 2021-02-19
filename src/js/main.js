@@ -440,6 +440,7 @@ ipcRenderer.on("updatePosition", (event, message) => {
     document.getElementById("lon").textContent = "lon: " + message.gpsPosition.lon, + ", "
     document.getElementById("alt").textContent = "alt: " + message.gpsPosition.alt
 
+    document.getElementById("yaw").textContent = message.yaw
     document.getElementById("flying").textContent = message.isDroneFlying
 })
 
