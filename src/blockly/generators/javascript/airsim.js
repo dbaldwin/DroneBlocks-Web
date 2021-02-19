@@ -235,11 +235,12 @@ Blockly.JavaScript['hover'] = function(block) {
 
 Blockly.JavaScript['rotate_to_yaw'] = function(block) {
   var angle = Blockly.JavaScript.valueToCode(block, 'angle', Blockly.JavaScript.ORDER_NONE);
+  var blockId = encodeURIComponent(block.id)
 
   if(isNaN(parseInt(angle))) {
-    return 'mission+="|rotate_to_yaw," + eval(' + angle + ') + "";';
+    return 'mission+="|rotate_to_yaw,' + blockId + '," + eval(' + angle + ') + "";';
   } else {
-    return 'mission+="|rotate_to_yaw,' + angle + '";';
+    return 'mission+="|rotate_to_yaw,' + blockId + ',' + angle + '";';
   }
 };
 
