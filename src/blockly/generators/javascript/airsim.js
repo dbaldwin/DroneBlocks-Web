@@ -135,8 +135,9 @@ Blockly.JavaScript['fly_rpy'] = function(block) {
   var p = Blockly.JavaScript.valueToCode(block, 'p', Blockly.JavaScript.ORDER_NONE);
   var y = Blockly.JavaScript.valueToCode(block, 'y', Blockly.JavaScript.ORDER_NONE);
   var seconds = Blockly.JavaScript.valueToCode(block, 'seconds', Blockly.JavaScript.ORDER_NONE);
+  let blockId = encodeURIComponent(block.id)
   
-  var blockString = 'mission+="|fly_rpy,';
+  var blockString = 'mission+="|fly_rpy,' + blockId + ',';
 
   if(isNaN(parseInt(r))) {
     blockString += '" + eval(' + r + ') + "';
