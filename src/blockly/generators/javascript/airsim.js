@@ -249,7 +249,7 @@ Blockly.JavaScript['rotate_to_yaw'] = function(block) {
 Blockly.JavaScript['rotate_yaw_rate'] = function(block) {
   var angle = Blockly.JavaScript.valueToCode(block, 'angle', Blockly.JavaScript.ORDER_NONE);
   var seconds = Blockly.JavaScript.valueToCode(block, 'seconds', Blockly.JavaScript.ORDER_NONE);
-  var blockString = 'mission+="|rotate_yaw_rate,';
+  var blockString = 'mission+="|rotate_yaw_rate,' + encodeURIComponent(block.id) + ',';
 
   if(isNaN(parseInt(angle))) {
     blockString += '" + eval(' + angle + ') + "';
