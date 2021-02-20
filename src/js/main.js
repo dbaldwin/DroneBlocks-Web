@@ -66,42 +66,6 @@ const bind = () => {
         launch();
     });
 
-    $("#showCode").click(() => {
-        showCode = !showCode;
-
-        if (showCode) {
-            $("#blocklyArea").removeClass("full");
-            $("#blocklyArea").addClass("half");
-            $("#codeView").removeClass("hidden");
-            $("#codeView").addClass("block");
-            $("#codeViewButton a").html("X");
-            $("#code").html(PR.prettyPrintOne(Blockly.Python.workspaceToCode(blockly.workspace)));
-            $("#showCode").text("Hide Mission Code");
-        } else {
-            $("#showCode").text("Show Mission Code");
-            $("#codeView").addClass("hidden");
-            $("#codeViewButton a").html("{ Code }");
-
-            if (location.pathname.indexOf('/simulator.html') == -1) {
-                $("#blocklyArea").removeClass("half");
-                $("#blocklyArea").addClass("full");
-            }
-
-        }
-
-        // Call to redraw the view
-        blockly.onresize();
-    });
-
-    $("#connectTo").click((e) => {
-        const text = $(e.target).text();
-        if (text.includes("Tello")) {
-            connectTo('Tello');
-        } else {
-            connectTo('DJI');
-        }
-    });
-
     $("#saveMission").click(() => {
 
         // Clear out the mission title from the dialog
@@ -173,65 +137,6 @@ const bind = () => {
         let { pathname, search } = location;
         let query = parseQueryInfo(search);
         document.location.href = decodeURIComponent(query.successUrl || '/');
-    });
-
-    $("#resetSimulator").click(() => {
-        window.commands = ['reset'];
-    });
-
-    $("#fullScreen").click(() => {
-        var elem = document.getElementById("droneArea");
-        openFullscreen(elem);
-    });
-    $("#toggleGrid").click(() => {
-        var toggleGridButton = document.getElementById('toggleGrid');
-        if (window.toggle === undefined) {
-            window.toggle = false;
-            toggleGridButton.innerHTML = '<i class="material-icons">grid_on</i>';
-        } else if(window.toggle === true){
-            window.toggle = false;
-            toggleGridButton.innerHTML = '<i class="material-icons">grid_on</i>';
-        } else {
-            window.toggle = true;
-            toggleGridButton.innerHTML = '<i class="material-icons">grid_off</i>';
-        }
-    });
-    $("#ringGen").click(() => {
-        window.ringTrigger = true;
-    });
-    $("#setUnits").click((e) => {
-        const units = $(e.currentTarget).data('units');
-
-        console.log(units);
-
-        if (units == 'metric') {
-            localStorage.setItem('units', 'metric');
-
-            if (document.location.href.match(/chrome_app/i)) {
-                document.location.href = "chrome_app_metric.html";
-            } else {
-                document.location.href = "tello_metric.html";
-            }
-        } else if (units == 'standard') {
-            localStorage.setItem('units', 'standard');
-
-            if (document.location.href.match(/chrome_app/i)) {
-                document.location.href = "chrome_app.html";
-            } else {
-                document.location.href = "tello.html";
-            }
-        }
-    })
-    $("#updatePassCode").click(() => {
-        var currentPassCode = $("#currentPassCode").val();
-        var newPassCode = $("#newPassCode").val();
-        if( currentPassCode == newPassCode) {
-            $("#passCodeModal").closeModal();
-        } else if(newPassCode.length === 0) {
-            window.alert("Minimum length of Passcode is 1");
-        } else {
-            firebase.changePassCode(newPassCode.toString());
-        }
     });
 }
 
