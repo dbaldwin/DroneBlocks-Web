@@ -1,9 +1,8 @@
 {
-    "apiKey": "AIzaSyBcbAt69BGUjPiOucQbkcNNbcdaSmE-G0o",
-    "authDomain": "fiery-inferno-4972.firebaseapp.com",
-    "databaseURL": "https://fiery-inferno-4972.firebaseio.com",
-    "projectId": "fiery-inferno-4972",
-    "storageBucket": "fiery-inferno-4972.appspot.com",
-    "messagingSenderId": "53726033017",
-    "appId": "1:53726033017:web:99f7233aa348d63205d0a8"
+    "apiKey": "AIzaSyD5WgAMAcnF46merZpJEDYC8A5HIea11gg",
+    "authDomain": "airsim-dev.firebaseapp.com",
+    "projectId": "airsim-dev",
+    "storageBucket": "airsim-dev.appspot.com",
+    "messagingSenderId": "371545914999",
+    "appId": "1:371545914999:web:ef4e5a2c33510ef96f1072"
 }
