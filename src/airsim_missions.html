@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html manifest="tello.appcache">
+<!-- <html> -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1; user-scalable=0;" />
+  <title>DroneBlocks</title>
+  <script src="./js/jquery-2.2.3.min.js"></script>
+  <style>
+  /* Override materialize h5 margin at top */
+  h5 {
+    margin: 0 !important;
+  }
+  .card-content {
+    margin-top: 0% !important;
+  }
+  </style>
+  <!-- Material -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="./lib/materialize/css/materialize.min.css"/>
+  <link rel="stylesheet" href="./lib/font-awesome/css/font-awesome.min.css"/>
+  <link rel="stylesheet" href="css/style.css">
+  
+  <script>
+    var aircraft = "Tello";
+  </script>
+  <script src="./lib/firebase/firebase.js"></script>
+  <script src="./lib/firebase/firebase-firestore.js"></script>
+
+  <script src="./js/jquery-2.2.3.min.js"></script>
+  <script src="./lib/materialize/js/materialize.min.js"></script>
+  <script src="./js/lib/main.min.js"></script>
+  <script src="./js/firebase.js"></script>
+</head>
+<body>
+  <header style="margin-top: 0px;" class="light-blue card-panel darken-1 white-text z-depth-0">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
+      <h5>My Tello Missions</h5>
+
+      <div>
+        <a href="/ios.html" class="waves-effect waves-dark btn z-depth-0" style="background-color: transparent">Home</a>
+      </div>
+    </div>
+  </header>
+  <div id="missions"></div>
+  
+  <div id="deleteMissionModal" class="modal">
+    
+    <div class="modal-content">
+      <h6>Are you sure you want to delete this DroneBlocks mission?</h6>
+    </div>
+    
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-light btn z-depth-0" id="deleteMissionButton">Delete</a>
+      <a href="#!" class=" modal-action modal-close waves-effect waves-light btn-flat">Cancel</a>
+    </div>
+    
+  </div>
+  
+  <div id="shareModal" class="modal">
+    
+    <div class="modal-content">
+      <p>Copy one of the links below to share this mission with a friend. You can share it with them on a desktop or on an iPad with DroneBlocks installed.</p>
+      
+      <div>
+        <div class="input-field col s6">
+          <strong>iPad Share Link</strong>
+          <input id="iPadShareLink" type="text" class="validate">
+          <a class="btn-floating halfway-fab waves-effect waves-light light-blue visitShare" onclick="copyLink('iPadShareLink')"><i class="material-icons">content_copy</i></a>
+        </div>
+      </div>
+      
+      <div>
+        <div class="input-field col s6">
+          <strong>Desktop Share Link</strong>
+          <input id="desktopShareLink" type="text" class="validate">
+          <a class="btn-floating halfway-fab waves-effect waves-light light-blue visitShare" onclick="copyLink('desktopShareLink')"><i class="material-icons">content_copy</i></a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-light btn z-depth-0" id="okButton">OK</a>
+    </div>
+    
+  </div>
+  
+  <script type="text/javascript" src="./lib/materialize/js/materialize.min.js"></script>
+  <script>
+    function copyLink(linkId) {
+      var link = document.getElementById(linkId);
+      link.select();
+      link.setSelectionRange(0, 99999)
+      document.execCommand("copy");
+      Materialize.toast('Link copied into clipboard', 3000);
+    }
+  </script>
+</body>
+</html>

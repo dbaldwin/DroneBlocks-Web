@@ -55,38 +55,14 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="./lib/materialize/css/materialize.min.css"  media="screen,projection"/>
 
-  <script>
-    var aircraft = "Tello";
-    // Initialize Firebase
-    // var config = {
-    //   apiKey: "AIzaSyBcbAt69BGUjPiOucQbkcNNbcdaSmE-G0o",
-    //   authDomain: "fiery-inferno-4972.firebaseapp.com",
-    //   databaseURL: "https://fiery-inferno-4972.firebaseio.com",
-    //   storageBucket: "",
-    // };
-    // var config = {
-    //   apiKey: "AIzaSyAGgqla_TWV4wVgaQ87HG3VDT0igLA8KhU",
-    //   authDomain: "droneblocks-staging.firebaseapp.com",
-    //   databaseURL: "https://droneblocks-staging.firebaseio.com",
-    //   projectId: "droneblocks-staging",
-    //   storageBucket: "droneblocks-staging.appspot.com",
-    // };
-    // firebase.initializeApp(config);
-
-    // For Tello metric/standard units
-    if(localStorage.getItem('units') != null) {
-      var units = localStorage.getItem('units');
-      if (units == "metric") {
-        document.location.href = "tello_metric.html" + document.location.search;
-      }
-    }
-  </script>
-  <script src="./lib/firebase/firebase.js"></script>
-  <script src="./lib/firebase/firebase-firestore.js"></script>
+  <!-- Added by DB 2/20/2021 in hopes of refactoring all the Firebase work -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.8/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.8/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.8/firebase-database.js"></script>
 
   <script src="./lib/materialize/js/materialize.min.js"></script>
   <script src="./js/lib/main.min.js"></script>
-  <script src="./js/firebase.js"></script>
 </head>
 <body>
 
@@ -98,18 +74,12 @@
     <li class="divider"></li>
     <li><a href="#" id="previewMission">Launch Mission</a></li>
     <li class="divider"></li>
-    <li><a href="#" id="showCode">Show Mission Code</a></li>
-    <li class="divider"></li>
     <li><a href="#" id="saveMission">Save Mission</a></li>
     <li class="divider" id="d1"></li>
     <li><a href="#" id="saveMissionAs">Save Mission As...</a></li>
     <li class="divider" id="d2"></li>
-    <li><a href="ios_missions.html" id="myMissions">My Missions</a></li>
+    <li><a href="airsim_missions.html" id="myMissions">My Missions</a></li>
     <li class="divider" id="d3"></li>
-    <li><a href="#" id="setUnits" data-units="metric">Switch to Metric Units</a></li>
-    <li class="divider" id="d4"></li>
-    <li><a href="#" id="connectTo">DJI Blocks</a></li>
-    <li class="divider" id="d5"></li>
     <li class="center-align" id="logout"><span class="waves-effect waves-light btn z-depth-0 light-blue">Logout</span></li>
   </ul>
 
