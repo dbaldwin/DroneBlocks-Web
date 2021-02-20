@@ -8,6 +8,7 @@
   <script>
     const { ipcRenderer } = require('electron');
   </script>
+  <!-- This is necessary to get blocks working in Electron env -->
   <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
   <script src="./js/jquery-2.2.3.min.js"></script>
   <script src="./blockly/blockly_compressed.js"></script>
@@ -45,7 +46,6 @@
   <script src="./blockly/blocks/airsim/weather_set.js"></script>
   <script src="./blockly/blocks/airsim/trace_line.js"></script>
   <script src="./blockly/blocks/tello/loop_with_variable.js"></script>
-  <script>if (window.module) module = window.module;</script>
 
   <link rel="stylesheet" type="text/css" href="./css/ios.css">
   <link rel="stylesheet" type="text/css" href="./blockly/prettify.css">
