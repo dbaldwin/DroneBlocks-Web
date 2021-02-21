@@ -240,14 +240,14 @@ html, body {
   /* Material CSS stuff */
   a#hamburger {
     position: absolute;
-    top: 0px;
+    top: 30px;
     right: 20px;
     z-index: 2;
   }
   
   div#missionTitle {
     position: absolute;
-    top: 12px;
+    top: 40px;
     right: 65px;
     z-index: 2;
   }

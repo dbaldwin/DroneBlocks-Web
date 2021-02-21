@@ -203,58 +203,6 @@ $(document).ready(() => {
     //     const queryData = searchSplit.split('&');
 
     // }
-    $('.tooltipped').tooltip({ delay: 50 });
-
-    if (pathname === '/simulator.html') {
-
-        $("#passcodeClose").click(() => {
-            document.location.href = '/';
-        });
-        firebase.getPassCode().then((v) => {
-            let passCode;
-            const savedPpassCode = sessionStorage.getItem("passCode") || null;
-            //console.log('entering another mission', v);
-            if (v) {
-                if(savedPpassCode != v.passCode) {
-                    $('#passcodeUserModal').openModal({dismissible:false});
-                    $("#passcodeConfirm").click(() => {
-                        passCode =  $('#passcode').val();
-                        if(passCode == v.passCode) {
-                            sessionStorage.setItem("passCode", v.passCode);
-                            Materialize.toast('Welcome! Password is correct.', 3000);
-                            $('#passcodeUserModal').closeModal();
-                        } else {
-                            console.log("password is not correct");
-                            Materialize.toast('Sorry! Password is incorrect. Please try again.', 3000);
-                            $('#passcodeUserModal').isOpen= true;
-                        }
-                    });
-                } else {
-                    Materialize.toast('Welcome! Password in session is correct.', 1000);
-                }
-            }
-        })
-
-    }
-
-    if (pathname === '/chrome_app.html' || pathname === '/' || pathname === '/tello.html') {
-        if (aircraft === 'DJI') {
-            if (pathname !== '/') {
-                location.href = '/' + search;
-            }
-        } else {
-            if (helpers.getMobileOS() !== 'unknown') {
-                if (pathname !== '/tello.html') {
-                    location.href = '/tello.html' + search;
-                }
-            } else {
-                if (pathname !== '/chrome_app.html') {
-                    location.href = '/chrome_app.html' + search;
-                }
-            }
-        }
-    }
-
 
     if (window.Blockly) {
         // Init blockly
@@ -274,7 +222,7 @@ $(document).ready(() => {
     firebase.init(() => {
         if (window.Blockly) {
             firebase.onAuthStateChanged((user) => {
-                console.log('user', user);
+                //console.log('user', user);
                 if (query && query.share === '1') {
                     return;
                 }
@@ -306,18 +254,6 @@ $(document).ready(() => {
     }
 })
 
-function openFullscreen(elem) {
-    if (elem.requestFullscreen) {
-        elem.requestFullscreen();
-    } else if (elem.mozRequestFullScreen) { /* Firefox */
-        elem.mozRequestFullScreen();
-    } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
-        elem.webkitRequestFullscreen();
-    } else if (elem.msRequestFullscreen) { /* IE/Edge */
-        elem.msRequestFullscreen();
-    }
-}
-
 function launch() {
 
     let code = 'var mission="";'
@@ -336,32 +272,23 @@ function launch() {
 }
 
 // Receive worldPosition from main process and update UI
-ipcRenderer.on("updatePosition", (event, message) => {
-    document.getElementById("x_val").textContent = "x: " + message.worldPosition.x_val, + ", "
-    document.getElementById("y_val").textContent = "y: " + message.worldPosition.y_val, + ", "
-    document.getElementById("z_val").textContent = "z: " + message.worldPosition.z_val
+var userAgent = navigator.userAgent.toLowerCase();
+if (userAgent.indexOf(' electron/') > -1) {
+    ipcRenderer.on("updatePosition", (event, message) => {
+        document.getElementById("x_val").textContent = "x: " + message.worldPosition.x_val, + ", "
+        document.getElementById("y_val").textContent = "y: " + message.worldPosition.y_val, + ", "
+        document.getElementById("z_val").textContent = "z: " + message.worldPosition.z_val
 
-    document.getElementById("lat").textContent = "lat: " + message.gpsPosition.lat, + ", "
-    document.getElementById("lon").textContent = "lon: " + message.gpsPosition.lon, + ", "
-    document.getElementById("alt").textContent = "alt: " + message.gpsPosition.alt
+        document.getElementById("lat").textContent = "lat: " + message.gpsPosition.lat, + ", "
+        document.getElementById("lon").textContent = "lon: " + message.gpsPosition.lon, + ", "
+        document.getElementById("alt").textContent = "alt: " + message.gpsPosition.alt
 
-    document.getElementById("yaw").textContent = message.yaw
-    document.getElementById("flying").textContent = message.isDroneFlying
-})
+        document.getElementById("yaw").textContent = message.yaw
+        document.getElementById("flying").textContent = message.isDroneFlying
+    })
 
-// Receive block id from main process and update block on canvas
-ipcRenderer.on("highlightBlock", (event, message) => {
-    Blockly.getMainWorkspace().highlightBlock(message.id)
-})
-
-// We only want to launch with the T key on simulator
-// Otherwise this will trigger on Chrome app and possibly mobile
-if (document.location.href.includes("simulator")) {
-    document.addEventListener("keypress", function (event) {
-        let isValidPassCode = !$('#passcodeUserModal').hasClass('open');
-        if (isValidPassCode && (event.keyCode == 116) || (event.keyCode == 84)) {
-            console.log('T clicked');
-            launch();
-        }
-    });
+    // Receive block id from main process and update block on canvas
+    ipcRenderer.on("highlightBlock", (event, message) => {
+        Blockly.getMainWorkspace().highlightBlock(message.id)
+    })
 }

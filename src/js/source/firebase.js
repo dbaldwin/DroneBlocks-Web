@@ -121,7 +121,7 @@ const saveMission = (workspace) => {
 
                 db.collection('missions').doc(_missionId).set({
                     uid: user.uid,
-                    aircraft,
+                    aircraft: 'AirSim',
                     title: $("#title").val(),
                     missionXML,
                     createdAt: new Date(),

@@ -21,24 +21,22 @@
   <link rel="stylesheet" href="./lib/font-awesome/css/font-awesome.min.css"/>
   <link rel="stylesheet" href="css/style.css">
   
-  <script>
-    var aircraft = "Tello";
-  </script>
-  <script src="./lib/firebase/firebase.js"></script>
-  <script src="./lib/firebase/firebase-firestore.js"></script>
+  <!-- Added by DB 2/20/2021 in hopes of refactoring all the Firebase work -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.8/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.8/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.8/firebase-database.js"></script>
 
-  <script src="./js/jquery-2.2.3.min.js"></script>
   <script src="./lib/materialize/js/materialize.min.js"></script>
   <script src="./js/lib/main.min.js"></script>
-  <script src="./js/firebase.js"></script>
 </head>
 <body>
   <header style="margin-top: 0px;" class="light-blue card-panel darken-1 white-text z-depth-0">
     <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
-      <h5>My Tello Missions</h5>
+      <h5>My AirSim Missions</h5>
 
       <div>
-        <a href="/ios.html" class="waves-effect waves-dark btn z-depth-0" style="background-color: transparent">Home</a>
+        <a href="/airsim.html" class="waves-effect waves-dark btn z-depth-0" style="background-color: transparent">Home</a>
       </div>
     </div>
   </header>
